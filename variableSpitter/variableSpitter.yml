@@ -1,0 +1,23 @@
+# this file demonstrates how to pass environment variables to containers orchestrated 
+# with Kubernetes and deployed declaratively (using yaml file). 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vs
+spec:
+  selector: 
+    matchLabels: 
+      app: vs
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: vs
+    spec:
+      containers:
+        - image: jrkessl/variablespitter:latest
+          name: vs
+          env:
+            - name: var1
+              value: lilili
