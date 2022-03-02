@@ -13,3 +13,16 @@ Useful for testing network connectivity, and network routing when learning conta
 You may be thinking "I can just run curl in my prompt, why do I need this" but think you want to test container to container communication, and not host to container communication.  
 
 Run as: `docker container run --rm --env HOS=localhost --env POR=9000 --network=host jrkessl/meucurl`
+  
+## variableSpitter  
+This container:  
+ - Retrieves and prints out environment variables that are reachable to the container  
+ - Possibly other variable-related test or exercise, to be added...  
+  
+Building:  
+`docker build . --tag variablespitter`  
+  
+Using it:   
+ - Spitting a variable with docker CLI:  
+`docker run --name varspit --rm --env var1=valueGoesHere variablespitter:latest`  
+
