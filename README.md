@@ -24,7 +24,7 @@ Building:
   
 Using it:   
  - Spitting a variable with docker CLI:  
-`docker run --name varspit --rm --env var1=valueGoesHere variablespitter:latest`  
+`docker run --name varspit --rm --env var1=valueGoesHere jrkessl/variablespitter:latest`  
  - Spitting a variable with declarative Kubernetes: just check the file 'variableSpitter.yml' and apply with `kubectl apply -f variableSpitter.yml` and then `kubectl logs pod/<pod name goes here>`  
 
 
