@@ -27,4 +27,6 @@ Using it:
 `docker run --name varspit --rm --env var1=valueGoesHere jrkessl/variablespitter:latest`  
  - Spitting a variable with declarative Kubernetes: just check the file 'variableSpitter.yml' and apply with `kubectl apply -f variableSpitter.yml` and then `kubectl logs pod/<pod name goes here>`  
 
-
+## postgres
+This just contains a declarative yml deploy file that deploys a Postgres database in your k8s cluster.  
+Check instructions in the file. 

@@ -1,0 +1,52 @@
+# this file deploys in kubernetes (microk8s kubernetes) a PostgreSql container, with a load balacer so it's 
+# reachable. Tested in Microk8s. Usage:
+# microk8s.kubectl apply -f deployPostgres.yml                    # to deploy
+# microk8s.kubectl get all                                        # to get the IP of the LoadBalancer service created
+# docker container run -it --rm  postgres psql -U postgres -h 10.152.183.108 # to connect. 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meupostgres
+spec:
+  selector: 
+    matchLabels: 
+      app: meupostgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: meupostgres
+    spec:
+      containers:
+        - image: postgres:14.2
+          name: meupostgres
+          env:
+            - name: POSTGRES_PASSWORD
+              value: larissinha
+          ports:
+            - containerPort: 5432
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: meupostgres-cip
+spec:
+  type: ClusterIP
+  ports: 
+    - port: 50051
+  selector: 
+    app: meupostgres
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: meupostgres-lb
+spec:
+  type: LoadBalancer
+  ports: 
+    - port: 5432
+  selector: 
+    app: meupostgres
+
+
