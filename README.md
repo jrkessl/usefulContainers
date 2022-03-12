@@ -28,5 +28,7 @@ Using it:
  - Spitting a variable with declarative Kubernetes: just check the file 'variableSpitter.yml' and apply with `kubectl apply -f variableSpitter.yml` and then `kubectl logs pod/<pod name goes here>`  
 
 ## postgres
-This just contains a declarative yml deploy file that deploys a Postgres database in your k8s cluster.  
-Check instructions in the file. 
+This contains a walkthrough of using PostgreSQL with Kubernetes.   
+Check instructions in the file. Here you have: 
+- Commit 51682752fde1f373317914fe6b0319cc6646a9f0: this just creates a Postgres deployment with declarative yaml.  
+- The latest commit: adds a demonstration of using local persistent volumes (hostPath type) so that the database's data survives its Deployment.  
